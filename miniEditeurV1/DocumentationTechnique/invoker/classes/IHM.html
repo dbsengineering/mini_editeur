@@ -1,0 +1,1682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>Documentation du Mini Editeur de texte V1</title>
+    <meta name="author" content="Cavron Jérémy & Ez Ziraiy Nada"/>
+    <meta name="description" content=""/>
+
+    <link href="../../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../../js/jquery-1.11.0.min.js"></script>
+    <script src="../../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/jquery.smooth-scroll.js"></script>
+    <script src="../../js/prism.min.js"></script>
+<!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'java';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Chargement…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+}
+
+$(document).ready(function(){
+    loadExternalCodeSnippets();
+});
+$('#source-view').on('shown', function () {
+    loadExternalCodeSnippets();
+})
+</script>
+
+<link rel="shortcut icon" href="../../images/favicon.ico"/>
+<link rel="apple-touch-icon" href="../../images/apple-touch-icon.png"/>
+<link rel="apple-touch-icon" sizes="72x72" href="../../images/apple-touch-icon-72x72.png"/>
+<link rel="apple-touch-icon" sizes="114x114" href="../../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <i class="icon-ellipsis-vertical"></i>
+                </a>
+                <a class="brand" href="../../index.html"><img src="../../images/logoword.png" alt="logoWord" height="32" width="32">&nbsp;Documentation technique du Mini Editeur de texte V1</a>
+
+                <div class="nav-collapse">
+                    <ul class="nav pull-right">
+                        <li class="dropdown" id="charts-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Diagrammes <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="../../graphs/class.html">
+                                        <i class="icon-list-alt"></i>&#160;Diagramme général du Mini Editeur de texte
+                                    </a>
+                                </li>
+                               
+                            </ul>
+                        </li>
+                        <li class="dropdown" id="reports-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Rapports <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="../../reports/errors.html">
+                                        <i class="icon-list-alt"></i>&#160;Erreurs <span class="label label-info pull-right">0</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../../reports/markers.html">
+                                        <i class="icon-list-alt"></i>&#160;Marqueurs <span class="label label-info pull-right">0</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../../reports/deprecated.html">
+                                        <i class="icon-list-alt"></i>&#160;Déprécié <span class="label label-info pull-right">0</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--<div class="go_to_top">-->
+        <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+        <!--</div>-->
+    </div>
+
+    <div id="___" class="container-fluid">
+        <section class="row-fluid">
+            <div class="span2 sidebar">
+                <div class="accordion" style="margin-bottom: 0">
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle " data-toggle="collapse" data-target="#index-1169638574"></a>
+                            <a href="../../index.html" style="margin-left: 30px; padding-left: 0">\Mini Editeur de texte version 1</a>
+                        </div>
+                        <div id="index-1169638574" class="accordion-body collapse in">
+                            <div class="accordion-inner">
+
+                                <!-- lien dans la liste de gauche -->
+                                <ul>
+                                    <li class="glyphicon glyphicon-flag"><a href="../../client/client.editeurTxt.html" title="client.editeurTxt">Client.EditeurTxt</a></li>
+                                </ul>
+                                <ul>
+                                    <li class="glyphicon glyphicon-flag"><a href="../../command/command.coller.html" title="command.coller">Command.Coller</a></li>
+                                </ul>
+                                <ul>
+                                    <li class="glyphicon glyphicon-flag"><a href="../../command/command.command.html" title="command.command">Command.Command</a></li>
+                                </ul>
+                                <ul>
+                                    <li class="glyphicon glyphicon-flag"><a href="../../command/command.copier.html" title="command.copier">Command.Copier</a></li>
+                                </ul>
+                                <ul>
+                                    <li class="glyphicon glyphicon-flag"><a href="../../command/command.couper.html" title="command.couper">Command.Couper</a></li>
+                                </ul>
+                                <ul>
+                                    <li class="glyphicon glyphicon-flag"><a href="../../command/command.insertTxt.html" title="command.insertTxt">Command.InsertTxt</a></li>
+                                </ul>
+                                <ul>
+                                    <li class="glyphicon glyphicon-flag"><a href="../../command/command.selectionner.html" title="command.selectionner">Command.Selectionner</a></li>
+                                </ul>
+                                <ul>
+                                    <li class="glyphicon glyphicon-flag"><a href="../../command/command.supprime.html" title="command.supprime">Command.Supprime</a></li>
+                                </ul>
+                                <ul>
+                                    <li class="glyphicon glyphicon-flag"><a href="../../invoker/invoker.ihm.html" title="invoker.ihm">Invoker.IHM</a></li>
+                                </ul>
+                                <ul>
+                                    <li class="glyphicon glyphicon-flag"><a href="../../observer/observer.ihmobs.html" title="observer.ihmobs">Observer.IHMObs</a></li>
+                                </ul>
+                                <ul>
+                                    <li class="glyphicon glyphicon-flag"><a href="../../observer/observer.observer.html" title="observer.observer">Observer.Observer</a></li>
+                                </ul>
+                                <ul>
+                                    <li class="glyphicon glyphicon-flag"><a href="../../observer/observer.subject.html" title="observer.subject">Observer.Subject</a></li>
+                                </ul>
+                                <ul>
+                                    <li class="glyphicon glyphicon-flag"><a href="../../receiver/receiver.buffer.html" title="receiver.buffer">Receiver.Buffer</a></li>
+                                </ul>
+                                <ul>
+                                    <li class="glyphicon glyphicon-flag"><a href="../../receiver/receiver.moteured.html" title="receiver.moteured">Receiver.MoteurEd</a></li>
+                                </ul>
+                                <ul>
+                                    <li class="glyphicon glyphicon-flag"><a href="../../receiver/receiver.moteuredinter.html" title="receiver.moteuredinter">Receiver.MoteurEdInter</a></li>
+                                </ul>
+                                <ul>
+                                    <li class="glyphicon glyphicon-flag"><a href="../../receiver/receiver.presspapier.html" title="receiver.presspapier">Receiver.PressPapier</a></li>
+                                </ul>
+                                <ul>
+                                    <li class="glyphicon glyphicon-flag"><a href="../../receiver/receiver.select.html" title="receiver.select">Receiver.Select</a></li>
+                                </ul>
+                                <!-- fin lien liste de gauche -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <section class="row-fluid">
+            <div class="span10 offset2">
+                <div class="row-fluid">
+                    <div class="span8 content class">
+                        <nav>
+                            <br />
+                            <a href="../command.ihm.html">Mini Editeur de texte V1\Invoker.IHM</a> <i class="icon-level-up"></i>
+                        </nav>
+                        <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                        <h1><small>Invoker</small>IHM</h1>
+                        <p><em>Classe IHM.java.</em></p>
+                        <p>Interface graphique du programme.</p>
+                        <p>JavaSE - 1.8</p>
+
+
+                        <section id="summary">
+                            <h2>Sommaire</h2>
+                            <section class="row-fluid heading">
+                                <section class="span4">
+                                    <a href="#procedures">Procédures</a>
+                                </section>
+                                <section class="span4">
+                                    <a href="#properties">Propriétés</a>
+                                </section>
+                                <section class="span4">
+                                    <a href="#fonctions">Fonctions</a>
+                                </section>
+                            </section>
+
+                            <!-- Section publique -->
+                            <section class="row-fluid public">
+
+                                <section class="span4">
+                                    <a href="#method_ihm" class="">IHM()</a><br />
+                                    <a href="#method_settxt" class="">setTxt()</a><br />
+                                    <a href="#method_setcmds" class="">setCmds()</a><br />
+                                    <a href="#method_update" class="">update()</a><br />
+                                </section>
+                                <section class="span4">
+
+                                </section>
+                                <section class="span4">
+                                    <a href="#function_gettext" class="">getTxt()</a><br />
+                                    <a href="#function_getdebselect" class="">getDebSelect()</a><br />
+                                    <a href="#function_getlngselect" class="">getLngSelect()</a><br />
+                                    <a href="#function_getlastchar" class="">getLastChar()</a><br />
+                                </section>
+                            </section>
+
+                            <!-- Section protégée -->
+                            <section class="row-fluid protected">
+
+                            </section>
+
+                            <!-- Section privée -->
+                            <section class="row-fluid private">
+                                <section class="span4">
+                                    <a href="#method_setselect" class="">setSelect()</a><br />
+                                    <a href="#method_initcomponents" class="">initComponents()</a><br />
+                                    <a href="#method_copyactionperformed" class="">copyActionPerformed()</a><br />
+                                    <a href="#method_cutactionperformed" class="">cutActionPerformed()</a><br />
+                                    <a href="#method_pastactionperformed" class="">pastActionPerformed()</a><br />
+                                    <a href="#method_inserttxtaction" class="">insertTxtAction()</a><br />
+                                    <a href="#method_selectactionperformed" class="">selectActionPerformed()</a><br />
+                                </section>
+                                <section class="span4">
+                                    <a href="#property_btncopy" class="">btnCopy</a><br />
+                                    <a href="#property_btnbiscopy" class="">btnBisCopy</a><br />
+                                    <a href="#property_cmdcopy" class="">cmdCopy</a><br />
+                                    <a href="#property_btncut" class="">btnCut</a><br />
+                                    <a href="#property_btnbiscut" class="">btnBisCut</a><br />
+                                    <a href="#property_cmdcut" class="">cmdCut</a><br />
+                                    <a href="#property_btnpast" class="">btnPast</a><br />
+                                    <a href="#property_btnbispast" class="">btnBisPast</a><br />
+                                    <a href="#property_cmdpast" class="">cmdPast</a><br />
+                                    <a href="#property_cmdinstext" class="">cmdInsText</a><br />
+                                    <a href="#property_cmdselect" class="">cmdSelect</a><br />
+                                    <a href="#property_cmdsupp" class="">cmdSupp</a><br />
+                                    <a href="#property_jscrollpane1" class="">jScrollPane1</a><br />
+                                    <a href="#property_lblstatut" class="">lblStatut</a><br />
+                                    <a href="#property_menubar" class="">menuBar</a><br />
+                                    <a href="#property_menuedit" class="">menuEdit</a><br />
+                                    <a href="#property_menufile" class="">menuFile</a><br />
+                                    <a href="#property_pnlstatut" class="">pnlStatut</a><br />
+                                    <a href="#property_pnltext" class="">pnlText</a><br />
+                                    <a href="#property_pnltool" class="">pnlTool</a><br />
+                                    <a href="#property_txtedit" class="">txtEdit</a><br />
+                                    <a href="#property_toolbar" class="">toolbar</a><br />
+                                    <a href="#property_debselect" class="">debSelect</a><br />
+                                    <a href="#property_lngselect" class="">lngSelect</a><br />
+                                    <a href="#property_lastchar" class="">lastChar</a><br />
+                                    <a href="#property_properties" class="">properties</a><br />
+                                </section>
+                                <section class="span4">
+                                    <a href="#function_getrgb" class="">getRGB()</a><br />
+                                </section>
+                            </section>
+                        </section>
+                    </div>
+                    <aside class="span4 detailsbar">
+
+
+                        <dl>
+                            <dt>Fichier</dt>
+                            <dd><a href="../../graphs/diagGen.html"><div class="path-wrapper">IHM.java</div></a></dd>
+                            <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">invoker</div></dd>
+                            <dt>hierarchie classe</dt>
+                            <dd class="hierarchy">
+                                <div class="namespace-wrapper">\IHM</div>
+                            </dd>
+
+                            <dt>Voir aussi</dt>
+                            <dd><a href="http://www.dbs.bzh/portfolio"><div class="namespace-wrapper">http://www.dbs.bzh/portfolio</div></a></dd>
+
+                        </dl>
+                        <h2>Tags</h2>
+                        <table class="table table-condensed">
+
+                            <tr>
+                                <th>
+                                    author
+                                </th>
+                                <td>
+                                    <p>Cavron Jérémy &amp; Ez Ziraiy Nada</p>
+                                </td>
+                            </tr>
+                           
+                            <tr>
+                                <th>
+                                    version
+                                </th>
+                                <td>
+                                    <p>v 1.0</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </aside>
+                </div>
+
+
+                <a id="properties" name="properties"></a>
+                <div class="row-fluid">
+                    <div class="span8 content class">
+                        <h2>Propriétés</h2>
+                    </div>
+                    <aside class="span4 detailsbar"></aside>
+                </div>
+
+                <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="property_btncopy" name="property_btncopy" class="anchor"></a>
+                        <article class="property">
+                            <h3 class="private ">btnCopy</h3>
+                            <pre class="signature">btnCopy</pre>
+
+                            <p><em>Bouton "copier" dans le menu.</em></p>
+                            <h4>Type</h4>
+                            javax.swing.JMenuItem
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info"></span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+                <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="property_btnbiscopy" name="property_btnbiscopy" class="anchor"></a>
+                        <article class="property">
+                            <h3 class="private ">btnBisCopy</h3>
+                            <pre class="signature">btnBisCopy</pre>
+
+                            <p><em>Bouton "copier" dans la barre d'outils.</em></p>
+                            <h4>Type</h4>
+                            javax.swing.JButton
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info"></span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+
+                <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="property_cmdcopy" name="property_cmdcopy" class="anchor"></a>
+                        <article class="property">
+                            <h3 class="private ">cmdCopy</h3>
+                            <pre class="signature">cmdCopy</pre>
+
+                            <p><em>Commande "copier".</em></p>
+                            <h4>Type</h4>
+                            commande.Copier
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info"></span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+
+                <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="property_btncut" name="property_btncut" class="anchor"></a>
+                        <article class="property">
+                            <h3 class="private ">btnCut</h3>
+                            <pre class="signature">btnCut</pre>
+
+                            <p><em>Bouton "couper" dans le menu.</em></p>
+                            <h4>Type</h4>
+                            javax.swing.JMenuItem
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info"></span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+
+                 <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="property_btnbiscut" name="property_btnbiscut" class="anchor"></a>
+                        <article class="property">
+                            <h3 class="private ">btnBisCut</h3>
+                            <pre class="signature">btnBisCut</pre>
+
+                            <p><em>Bouton "couper" dans la barre d'outils.</em></p>
+                            <h4>Type</h4>
+                            javax.swing.JButton
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info"></span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+                <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="property_cmdcut" name="property_cmdcut" class="anchor"></a>
+                        <article class="property">
+                            <h3 class="private ">cmdCut</h3>
+                            <pre class="signature">cmdCut</pre>
+
+                            <p><em>Commande "couper".</em></p>
+                            <h4>Type</h4>
+                            commande.Couper
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info"></span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+
+                 <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="property_btnpast" name="property_btnpast" class="anchor"></a>
+                        <article class="property">
+                            <h3 class="private ">btnPast</h3>
+                            <pre class="signature">btnPast</pre>
+
+                            <p><em>Bouton "coller" dans le menu.</em></p>
+                            <h4>Type</h4>
+                            javax.swing.JMenuItem
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info"></span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+
+                 <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="property_btnbispast" name="property_btnbispast" class="anchor"></a>
+                        <article class="property">
+                            <h3 class="private ">btnBisPast</h3>
+                            <pre class="signature">btnBisPast</pre>
+
+                            <p><em>Bouton "coller" dans la barre d'outils.</em></p>
+                            <h4>Type</h4>
+                            javax.swing.JButton
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info"></span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+                <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="property_cmdpast" name="property_cmdpast" class="anchor"></a>
+                        <article class="property">
+                            <h3 class="private ">cmdPast</h3>
+                            <pre class="signature">cmdPast</pre>
+
+                            <p><em>Commande "coller".</em></p>
+                            <h4>Type</h4>
+                            commande.Coller
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info"></span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+                 <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="property_cmdinstext" name="property_cmdinstext" class="anchor"></a>
+                        <article class="property">
+                            <h3 class="private ">cmdInsText</h3>
+                            <pre class="signature">cmdInsText</pre>
+
+                            <p><em>Commande "insérer texte".</em></p>
+                            <h4>Type</h4>
+                            commande.InsertTxt
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info"></span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+
+                  <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="property_cmdselect" name="property_cmdselect" class="anchor"></a>
+                        <article class="property">
+                            <h3 class="private ">cmdSelect</h3>
+                            <pre class="signature">cmdSelect</pre>
+
+                            <p><em>Commande "sélectionner texte".</em></p>
+                            <h4>Type</h4>
+                            commande.Selectionner
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info"></span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+                <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="property_cmdsupp" name="property_cmdsupp" class="anchor"></a>
+                        <article class="property">
+                            <h3 class="private ">cmdSupp</h3>
+                            <pre class="signature">cmdSupp</pre>
+
+                            <p><em>Commande "supprimer texte".</em></p>
+                            <h4>Type</h4>
+                            commande.Supprime
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info"></span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+                  <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="property_jscrollpane1" name="property_jscrollpane1" class="anchor"></a>
+                        <article class="property">
+                            <h3 class="private ">jScrollPane1</h3>
+                            <pre class="signature">jScrollPane1</pre>
+
+                            <p><em>Scroll du panel texte.</em></p>
+                            <h4>Type</h4>
+                            javax.swing.JScrollPane
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info"></span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+                <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="property_lblstatut" name="property_lblstatut" class="anchor"></a>
+                        <article class="property">
+                            <h3 class="private ">lblStatut</h3>
+                            <pre class="signature">lblStatut</pre>
+
+                            <p><em>Label pour afficher le statut.</em></p>
+                            <h4>Type</h4>
+                            javax.swing.JLabel
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info"></span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+                <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="property_menubar" name="property_menubar" class="anchor"></a>
+                        <article class="property">
+                            <h3 class="private ">menuBar</h3>
+                            <pre class="signature">menuBar</pre>
+
+                            <p><em>Menu de la barre d'outils.</em></p>
+                            <h4>Type</h4>
+                            javax.swing.JMenuBar
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info"></span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+                <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="property_menuedit" name="property_menuedit" class="anchor"></a>
+                        <article class="property">
+                            <h3 class="private ">menuEdit</h3>
+                            <pre class="signature">menuEdit</pre>
+
+                            <p><em>Menu Edition.</em></p>
+                            <h4>Type</h4>
+                            javax.swing.JMenu
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info"></span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+                <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="property_menufile" name="property_menufile" class="anchor"></a>
+                        <article class="property">
+                            <h3 class="private ">menuFile</h3>
+                            <pre class="signature">menuFile</pre>
+
+                            <p><em>Menu Fichier.</em></p>
+                            <h4>Type</h4>
+                            javax.swing.JMenu
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info"></span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+                <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="property_pnlstatut" name="property_pnlstatut" class="anchor"></a>
+                        <article class="property">
+                            <h3 class="private ">pnlStatut</h3>
+                            <pre class="signature">pnlStatut</pre>
+
+                            <p><em>Panel pour le statut.</em></p>
+                            <h4>Type</h4>
+                            javax.swing.JPanel
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info"></span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+                 <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="property_pnltext" name="property_pnltext" class="anchor"></a>
+                        <article class="property">
+                            <h3 class="private ">pnlText</h3>
+                            <pre class="signature">pnlText</pre>
+
+                            <p><em>Panel pour le texte.</em></p>
+                            <h4>Type</h4>
+                            javax.swing.JPanel
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info"></span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+                 <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="property_pnltool" name="property_pnltool" class="anchor"></a>
+                        <article class="property">
+                            <h3 class="private ">pnlTool</h3>
+                            <pre class="signature">pnlStatut</pre>
+
+                            <p><em>Panel pour la barre d'outils.</em></p>
+                            <h4>Type</h4>
+                            javax.swing.JPanel
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info"></span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+                 <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="property_txtedit" name="property_txtedit" class="anchor"></a>
+                        <article class="property">
+                            <h3 class="private ">txtEdit</h3>
+                            <pre class="signature">txtEdit</pre>
+
+                            <p><em>Zone de texte.</em></p>
+                            <h4>Type</h4>
+                            javax.swing.JTextArea
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info"></span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+                <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="property_toolbar" name="property_toolbar" class="anchor"></a>
+                        <article class="property">
+                            <h3 class="private ">toolBar</h3>
+                            <pre class="signature">toolBar</pre>
+
+                            <p><em>Barre d'outils.</em></p>
+                            <h4>Type</h4>
+                            javax.swing.JToolBar
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info"></span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+                <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="property_debselect" name="property_debselect" class="anchor"></a>
+                        <article class="property">
+                            <h3 class="private ">debSelect</h3>
+                            <pre class="signature">debSelect</pre>
+
+                            <p><em>Début de sélection.</em></p>
+                            <h4>Type</h4>
+                            int
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info"></span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+                <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="property_lngselect" name="property_lngselect" class="anchor"></a>
+                        <article class="property">
+                            <h3 class="private ">lngSelect</h3>
+                            <pre class="signature">lngSelect</pre>
+
+                            <p><em>Longueur de sélection.</em></p>
+                            <h4>Type</h4>
+                            int
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info"></span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+                 <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="property_lastchar" name="property_lastchar" class="anchor"></a>
+                        <article class="property">
+                            <h3 class="private ">lastChar</h3>
+                            <pre class="signature">lastChar</pre>
+
+                            <p><em>Dernier caractère.</em></p>
+                            <h4>Type</h4>
+                            Char
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info"></span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+                 <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="property_properties" name="property_properties" class="anchor"></a>
+                        <article class="property">
+                            <h3 class="private ">properties</h3>
+                            <pre class="signature">properties</pre>
+
+                            <p><em>Fichier de propriétées.</em></p>
+                            <h4>Type</h4>
+                            Properties
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info">static</span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+
+
+                <!-- Procédures -->
+                <a id="procedures" name="procedures"></a>
+                <div class="row-fluid">
+                    <div class="span8 content class"><h2>Procédures</h2></div>
+                    <aside class="span4 detailsbar"></aside>
+                </div>
+
+                
+
+
+                <!-- IHM() -->
+                <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="method_ihm" name="method_ihm" class="anchor"></a>
+                        <article class="method">
+                            <h3 class="public">IHM()</h3>
+                            <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                            <pre class="signature" style="margin-right: 54px;">IHM() </pre>
+                            <p><em>Constructeur de la classe.</em></p>
+
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info"></span>
+                        <dl>
+                        </dl>
+                        <h2>Tags</h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em>Constructeur</em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+                <!-- setTxt() -->
+                 <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="method_settxt" name="method_settxt" class="anchor"></a>
+                        <article class="method">
+                            <h3 class="public">setTxt()</h3>
+                            <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                            <pre class="signature" style="margin-right: 54px;">setTxt(String <span class="argument">leTexte</span>) </pre>
+                            <p><em>Procédure qui modifie le texte.</em></p>
+
+                             <h4>Paramètres</h4>
+                            <table class="table table-condensed table-hover">
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Nom</th>
+                                    <th>Commentaire</th>
+                                </tr>
+                                <tr>
+                                    <td>String</td>
+                                    <td>leTexte</td>
+                                    <td><p>: Texte à insérer.</p></td>
+                                </tr>
+                            </table>
+
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info"></span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+                 <!-- setCmds() -->
+                 <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="method_setcmds" name="method_setcmds" class="anchor"></a>
+                        <article class="method">
+                            <h3 class="public">setCmds()</h3>
+                            <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                            <pre class="signature" style="margin-right: 54px;">setCmds(Map&lt;String,command.Command&gt; <span class="argument">mapCmds</span>) </pre>
+                            <p><em>Procédure qui initialiser les commandes.</em></p>
+
+                             <h4>Paramètres</h4>
+                            <table class="table table-condensed table-hover">
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Nom</th>
+                                    <th>Commentaire</th>
+                                </tr>
+                                <tr>
+                                    <td>Map&lt;String,command.Command&gt;</td>
+                                    <td>mapCmds</td>
+                                    <td><p>: map de commandes . &lt;String, command.Command&gt;.</p></td>
+                                </tr>
+                            </table>
+
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info"></span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+                 <!-- update() -->
+                 <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="method_update" name="method_update" class="anchor"></a>
+                        <article class="method">
+                            <h3 class="public">update()</h3>
+                            <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                            <pre class="signature" style="margin-right: 54px;">update(String <span class="argument">text</span>, int <span class="argument">deb</span>, int <span class="argument">lng</span>) </pre>
+                            <p><em>Procédure qui met à jour la zone de texte pour afficher les modifications apportées au buffer.</em></p>
+
+                             <h4>Paramètres</h4>
+                            <table class="table table-condensed table-hover">
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Nom</th>
+                                    <th>Commentaire</th>
+                                </tr>
+                                <tr>
+                                    <td>String</td>
+                                    <td>text</td>
+                                    <td><p>: texte à ajouter dans le JTextArea.</p></td>
+                                </tr>
+                                <tr>
+                                    <td>int</td>
+                                    <td>deb</td>
+                                    <td><p>: début de l'ajout du texte.</p></td>
+                                </tr>
+                                <tr>
+                                    <td>int</td>
+                                    <td>lng</td>
+                                    <td><p>: longueur texte.</p></td>
+                                </tr>
+                            </table>
+
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info"></span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+                <!-- setSelect() -->
+                 <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="method_setselect" name="method_setselect" class="anchor"></a>
+                        <article class="method">
+                            <h3 class="private">setSelect()</h3>
+                            <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                            <pre class="signature" style="margin-right: 54px;">setSelect(int <span class="argument">deb</span>, int <span class="argument">lng</span>) </pre>
+                            <p><em>Procédure qui permet d'iniitialiser le début et la longueur d'un texte sélectionné.</em></p>
+
+                             <h4>Paramètres</h4>
+                            <table class="table table-condensed table-hover">
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Nom</th>
+                                    <th>Commentaire</th>
+                                </tr>
+                                <tr>
+                                    <td>int</td>
+                                    <td>deb</td>
+                                    <td><p>: début de l'ajout du texte.</p></td>
+                                </tr>
+                                <tr>
+                                    <td>int</td>
+                                    <td>lng</td>
+                                    <td><p>: longueur texte.</p></td>
+                                </tr>
+                            </table>
+
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info"></span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+
+                  <!-- initComponents() -->
+                 <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="method_initcomponents" name="method_initcomponents" class="anchor"></a>
+                        <article class="method">
+                            <h3 class="private">initComponents()</h3>
+                            <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                            <pre class="signature" style="margin-right: 54px;">initComponents() </pre>
+                            <p><em>Procédure d'initialisation des composants.</em></p>
+
+
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info"></span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+
+                <!-- copyActionPerformed() -->
+                 <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="method_copyactionperformed" name="method_copyactionperformed" class="anchor"></a>
+                        <article class="method">
+                            <h3 class="private">copyActionPerformed()</h3>
+                            <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                            <pre class="signature" style="margin-right: 54px;">copyActionPerformed(java.awt.event.ActionEvent <span class="argument">evt</span>) </pre>
+                            <p><em>Procédure qui appelle la commande copier.</em></p>
+
+                             <h4>Paramètres</h4>
+                            <table class="table table-condensed table-hover">
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Nom</th>
+                                    <th>Commentaire</th>
+                                </tr>
+                                <tr>
+                                    <td>java.awt.event.ActionEvent</td>
+                                    <td>evt</td>
+                                    <td><p>: </p></td>
+                                </tr>
+                            </table>
+
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info"></span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+                 <!-- cutActionPerformed() -->
+                 <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="method_cutactionperformed" name="method_cutactionperformed" class="anchor"></a>
+                        <article class="method">
+                            <h3 class="private">cutActionPerformed()</h3>
+                            <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                            <pre class="signature" style="margin-right: 54px;">cutActionPerformed(java.awt.event.ActionEvent <span class="argument">evt</span>) </pre>
+                            <p><em>Procédure qui appelle la commande couper.</em></p>
+
+                             <h4>Paramètres</h4>
+                            <table class="table table-condensed table-hover">
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Nom</th>
+                                    <th>Commentaire</th>
+                                </tr>
+                                <tr>
+                                    <td>java.awt.event.ActionEvent</td>
+                                    <td>evt</td>
+                                    <td><p>: </p></td>
+                                </tr>
+                            </table>
+
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info"></span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+
+                <!-- pastActionPerformed() -->
+                 <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="method_pastactionperformed" name="method_pastactionperformed" class="anchor"></a>
+                        <article class="method">
+                            <h3 class="private">pastActionPerformed()</h3>
+                            <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                            <pre class="signature" style="margin-right: 54px;">pastActionPerformed(java.awt.event.ActionEvent <span class="argument">evt</span>) </pre>
+                            <p><em>Procédure qui appelle la commande coller.</em></p>
+
+                             <h4>Paramètres</h4>
+                            <table class="table table-condensed table-hover">
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Nom</th>
+                                    <th>Commentaire</th>
+                                </tr>
+                                <tr>
+                                    <td>java.awt.event.ActionEvent</td>
+                                    <td>evt</td>
+                                    <td><p>: </p></td>
+                                </tr>
+                            </table>
+
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info"></span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+                <!-- inserttxtaction() -->
+                 <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="method_inserttxtaction" name="method_inserttxtaction" class="anchor"></a>
+                        <article class="method">
+                            <h3 class="private">insertTxtAction()</h3>
+                            <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                            <pre class="signature" style="margin-right: 54px;">insertTxtAction(char <span class="argument">caract</span>) </pre>
+                            <p><em>Procédure qui appelle la commande insertTxt.</em></p>
+
+                             <h4>Paramètres</h4>
+                            <table class="table table-condensed table-hover">
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Nom</th>
+                                    <th>Commentaire</th>
+                                </tr>
+                                <tr>
+                                    <td>char</td>
+                                    <td>caract</td>
+                                    <td><p>: caractère d'insertion</p></td>
+                                </tr>
+                            </table>
+
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info"></span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+                <!-- selectActionPerformed() -->
+                 <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="method_selectactionperformed" name="method_selectactionperformed" class="anchor"></a>
+                        <article class="method">
+                            <h3 class="private">selectActionPerformed()</h3>
+                            <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                            <pre class="signature" style="margin-right: 54px;">selectActionPerformed(int[] <span class="argument">pos</span>) </pre>
+                            <p><em>Procédure qui appelle la commande selectTxt.</em></p>
+
+                             <h4>Paramètres</h4>
+                            <table class="table table-condensed table-hover">
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Nom</th>
+                                    <th>Commentaire</th>
+                                </tr>
+                                <tr>
+                                    <td>int[]</td>
+                                    <td>pos</td>
+                                    <td><p>: position de la sélection. Début de la sélection / longueur de la sélection.</p></td>
+                                </tr>
+                            </table>
+
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info"></span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+
+                <!-- Fonctions -->
+                <a id="fonctions" name="fonctions"></a>
+                <div class="row-fluid">
+                    <section class="span8 content file">
+                        <h2>Fonctions</h2>
+                    </section>
+                    <aside class="span4 detailsbar"></aside>
+                </div>
+                
+
+                 <!-- getTxt() -->
+                <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="function_gettext" name="function_gettext" class="anchor"></a>
+                        <article class="method">
+                            <h3 class="public">getText()</h3>
+                            <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                            <pre class="signature" style="margin-right: 54px;">getText() : txtEdit.getText()</pre>
+                            <p><em>Fonction qui retourne le texte.</em></p>
+
+                           
+                            
+                            <h4>Returns</h4>
+                            <table class="table table-condensed table-hover">
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Nom</th>
+                                    <th>Commentaire</th>
+                                </tr>
+                                <tr>
+                                    <td>String</td>
+                                    <td>txtEdit.getText()</td>
+                                    <td><p>: est le contenu du textArea.</p></td>
+                                </tr>
+                            </table>
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info"></span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+
+                <!-- getDebSelect() -->
+                <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="function_getdebselect" name="function_getdebselect" class="anchor"></a>
+                        <article class="method">
+                            <h3 class="public">getDebSelect()</h3>
+                            <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                            <pre class="signature" style="margin-right: 54px;">getDebSelect() : debSelect</pre>
+                            <p><em> Fonction qui retourne le début de la sélection.</em></p>
+
+                           
+                            
+                            <h4>Returns</h4>
+                            <table class="table table-condensed table-hover">
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Nom</th>
+                                    <th>Commentaire</th>
+                                </tr>
+                                <tr>
+                                    <td>int</td>
+                                    <td>debSelect</td>
+                                    <td><p>: est le début de la sélection.</p></td>
+                                </tr>
+                            </table>
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info"></span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+                <!-- getLngSelect() -->
+                <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="function_getlngselect" name="function_getlngselect" class="anchor"></a>
+                        <article class="method">
+                            <h3 class="public">getLngSelect()</h3>
+                            <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                            <pre class="signature" style="margin-right: 54px;">getLngSelect() : lngSelect</pre>
+                            <p><em>Fonction qui retourne la longueur de la sélection.</em></p>
+
+                           
+                            
+                            <h4>Returns</h4>
+                            <table class="table table-condensed table-hover">
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Nom</th>
+                                    <th>Commentaire</th>
+                                </tr>
+                                <tr>
+                                    <td>int</td>
+                                    <td>lngSelect</td>
+                                    <td><p>: est la longueur de la sélection.</p></td>
+                                </tr>
+                            </table>
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info"></span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+
+                <!-- getLastChar() -->
+                <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="function_getlastchar" name="function_getlastchar" class="anchor"></a>
+                        <article class="method">
+                            <h3 class="public">getLastChar()</h3>
+                            <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                            <pre class="signature" style="margin-right: 54px;">getLastChar() : lastChar</pre>
+                            <p><em>Fonction qui retourne le dernier caractère.</em></p>
+
+                           
+                            
+                            <h4>Returns</h4>
+                            <table class="table table-condensed table-hover">
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Nom</th>
+                                    <th>Commentaire</th>
+                                </tr>
+                                <tr>
+                                    <td>char</td>
+                                    <td>lastChar</td>
+                                    <td><p>: est le dernier caractère.</p></td>
+                                </tr>
+                            </table>
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info"></span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+                 <!-- getRGBr() -->
+                <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="function_getrgb" name="function_getrgb" class="anchor"></a>
+                        <article class="method">
+                            <h3 class="private">getRGB()</h3>
+                            <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                            <pre class="signature" style="margin-right: 54px;">getRGB(final String <span class="argument">rgb</span>) : color RG</pre>
+                            <p><em>Fonction qui retourne le dernier caractère.</em></p>
+
+                           
+                            
+                            <h4>Returns</h4>
+                            <table class="table table-condensed table-hover">
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Nom</th>
+                                    <th>Commentaire</th>
+                                </tr>
+                                <tr>
+                                    <td>int[]</td>
+                                    <td>color RG</td>
+                                    <td><p>: Couleur RGB.</p></td>
+                                </tr>
+                            </table>
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info"></span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+               
+
+            </div>
+        </section>
+
+
+        <!-- Lien fichiers -->
+
+        <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="source-view-label">IHM.java</h3>
+            </div>
+            <div class="modal-body">
+                <pre data-src="../files/ihm.txt" class="language-java line-numbers"></pre>
+            </div>
+        </div>
+
+         <!-- Footer -->
+
+        <footer class="row-fluid">
+            <section class="span10 offset2">
+                <section class="row-fluid">
+                    <section class="span10 offset1">
+                        <section class="row-fluid footer-sections">
+                            <section class="span4">
+                                <h1><i class="icon-code"></i></h1>
+                                <div>
+                                    <ul>
+                                        <li><a href="../../index.html">Documentation technique du Mini Editeur de texte V1</a></li>
+                                        <li><a href="../invoker.ihm.html">Invoker.IHM</a></li>
+                                    </ul>
+                                </div>
+                            </section>
+                            <section class="span4">
+                                <h1><i class="icon-bar-chart"></i></h1>
+                                <div>
+                                    <ul>
+                                        <li><a href="../../../graphs/class.html">Diagramme Hierarchique de classes</a></li>
+                                    </ul>
+                            
+                                </div>
+                            </section>
+                            <section class="span4">
+                                <h1><i class="icon-pushpin"></i></h1>
+                                <div>
+                                    <ul>
+                                        <li><a href="../reports/errors.html">Erreurs</a></li>
+                                        <li><a href="../reports/markers.html">Marqueurs</a></li>
+                                    </ul>
+                                </div>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+                <section class="row-fluid">
+                    <section class="span10 offset1">
+                        <hr />
+                        Documentation writting by <a href="http://www.dbs.bzh/portfolio">Jérémy Cavron</a>
+                           &amp; Ez Ziraiy Nada on November 2017.
+                    </section>
+                </section>
+            </section>
+        </footer>
+    </div>
+
+</body>
+</html>

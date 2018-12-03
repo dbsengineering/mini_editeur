@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>Documentation du Mini Editeur de texte V1</title>
+    <meta name="author" content="Cavron Jérémy & Ez Ziraiy Nada"/>
+    <meta name="description" content=""/>
+
+    <link href="../../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../../js/jquery-1.11.0.min.js"></script>
+    <script src="../../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/jquery.smooth-scroll.js"></script>
+    <script src="../../js/prism.min.js"></script>
+<!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'java';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Chargement…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+}
+
+$(document).ready(function(){
+    loadExternalCodeSnippets();
+});
+$('#source-view').on('shown', function () {
+    loadExternalCodeSnippets();
+})
+</script>
+
+<link rel="shortcut icon" href="../../images/favicon.ico"/>
+<link rel="apple-touch-icon" href="../../images/apple-touch-icon.png"/>
+<link rel="apple-touch-icon" sizes="72x72" href="../../images/apple-touch-icon-72x72.png"/>
+<link rel="apple-touch-icon" sizes="114x114" href="../../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <i class="icon-ellipsis-vertical"></i>
+                </a>
+                <a class="brand" href="../../index.html"><img src="../../images/logoword.png" alt="logoWord" height="32" width="32">&nbsp;Documentation technique du Mini Editeur de texte V1</a>
+
+                <div class="nav-collapse">
+                    <ul class="nav pull-right">
+                        <li class="dropdown" id="charts-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Diagrammes <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="../../graphs/class.html">
+                                        <i class="icon-list-alt"></i>&#160;Diagramme général du Mini Editeur de texte
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown" id="reports-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Rapports <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="../../reports/errors.html">
+                                        <i class="icon-list-alt"></i>&#160;Erreurs <span class="label label-info pull-right">0</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../../reports/markers.html">
+                                        <i class="icon-list-alt"></i>&#160;Marqueurs <span class="label label-info pull-right">0</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../../reports/deprecated.html">
+                                        <i class="icon-list-alt"></i>&#160;Déprécié <span class="label label-info pull-right">0</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--<div class="go_to_top">-->
+        <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+        <!--</div>-->
+    </div>
+
+    <div id="___" class="container-fluid">
+        <section class="row-fluid">
+            <div class="span2 sidebar">
+                <div class="accordion" style="margin-bottom: 0">
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle " data-toggle="collapse" data-target="#index-1169638574"></a>
+                            <a href="../../index.html" style="margin-left: 30px; padding-left: 0">\Mini Editeur de texte version 1</a>
+                        </div>
+                        <div id="index-1169638574" class="accordion-body collapse in">
+                            <div class="accordion-inner">
+
+                               <!-- lien dans la liste de gauche -->
+                                <ul>
+                                    <li class="glyphicon glyphicon-flag"><a href="../../client/client.editeurTxt.html" title="client.editeurTxt">Client.EditeurTxt</a></li>
+                                </ul>
+                                <ul>
+                                    <li class="glyphicon glyphicon-flag"><a href="../../command/command.coller.html" title="command.coller">Command.Coller</a></li>
+                                </ul>
+                                <ul>
+                                    <li class="glyphicon glyphicon-flag"><a href="../../command/command.command.html" title="command.command">Command.Command</a></li>
+                                </ul>
+                                <ul>
+                                    <li class="glyphicon glyphicon-flag"><a href="../../command/command.copier.html" title="command.copier">Command.Copier</a></li>
+                                </ul>
+                                <ul>
+                                    <li class="glyphicon glyphicon-flag"><a href="../../command/command.couper.html" title="command.couper">Command.Couper</a></li>
+                                </ul>
+                                <ul>
+                                    <li class="glyphicon glyphicon-flag"><a href="../../command/command.insertTxt.html" title="command.insertTxt">Command.InsertTxt</a></li>
+                                </ul>
+                                <ul>
+                                    <li class="glyphicon glyphicon-flag"><a href="../../command/command.selectionner.html" title="command.selectionner">Command.Selectionner</a></li>
+                                </ul>
+                                <ul>
+                                    <li class="glyphicon glyphicon-flag"><a href="../../command/command.supprime.html" title="command.supprime">Command.Supprime</a></li>
+                                </ul>
+                                <ul>
+                                    <li class="glyphicon glyphicon-flag"><a href="../../invoker/invoker.ihm.html" title="invoker.ihm">Invoker.IHM</a></li>
+                                </ul>
+                                <ul>
+                                    <li class="glyphicon glyphicon-flag"><a href="../../observer/observer.ihmobs.html" title="observer.ihmobs">Observer.IHMObs</a></li>
+                                </ul>
+                                <ul>
+                                    <li class="glyphicon glyphicon-flag"><a href="../../observer/observer.observer.html" title="observer.observer">Observer.Observer</a></li>
+                                </ul>
+                                <ul>
+                                    <li class="glyphicon glyphicon-flag"><a href="../../observer/observer.subject.html" title="observer.subject">Observer.Subject</a></li>
+                                </ul>
+                                <ul>
+                                    <li class="glyphicon glyphicon-flag"><a href="../../receiver/receiver.buffer.html" title="receiver.buffer">Receiver.Buffer</a></li>
+                                </ul>
+                                <ul>
+                                    <li class="glyphicon glyphicon-flag"><a href="../../receiver/receiver.moteured.html" title="receiver.moteured">Receiver.MoteurEd</a></li>
+                                </ul>
+                                <ul>
+                                    <li class="glyphicon glyphicon-flag"><a href="../../receiver/receiver.moteuredinter.html" title="receiver.moteuredinter">Receiver.MoteurEdInter</a></li>
+                                </ul>
+                                <ul>
+                                    <li class="glyphicon glyphicon-flag"><a href="../../receiver/receiver.presspapier.html" title="receiver.presspapier">Receiver.PressPapier</a></li>
+                                </ul>
+                                <ul>
+                                    <li class="glyphicon glyphicon-flag"><a href="../../receiver/receiver.select.html" title="receiver.select">Receiver.Select</a></li>
+                                </ul>
+                                <!-- fin lien liste de gauche -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <section class="row-fluid">
+            <div class="span10 offset2">
+                <div class="row-fluid">
+                    <div class="span8 content class">
+                        <nav>
+                            <br />
+                            <a href="../client.editeurTxt.html">Mini Editeur de texte V1\Client.EditeurTxt</a> <i class="icon-level-up"></i>
+                        </nav>
+                        <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                        <h1><small>Client</small>EditeurTxt</h1>
+                        <p><em>Classe EditeurTxt.java.</em></p>
+                        <p>Client du Design Pattern Command. Départ du programme. Classe qui permet d'initialiser les commandes, l'interface utilisateur, le receiver et l'observer.</p>
+                        <p>JavaSE - 1.8</p>
+
+
+                        <section id="summary">
+                            <h2>Sommaire</h2>
+                            <section class="row-fluid heading">
+                                <section class="span4">
+                                    <a href="#procedures">Procédures</a>
+                                </section>
+                                <section class="span4">
+                                    <a href="#properties">Propriétés</a>
+                                </section>
+                                <section class="span4">
+                                    <a href="#fonctions">Fonctions</a>
+                                </section>
+                            </section>
+
+                            <!-- Section publique -->
+                            <section class="row-fluid public">
+
+                                <section class="span4">
+                                    <a href="#method_main" class="">main()</a><br />
+
+                                </section>
+                                <section class="span4">
+
+                                </section>
+                                <section class="span4">
+
+                                </section>
+                            </section>
+
+                            <!-- Section protégée -->
+                            <section class="row-fluid protected">
+                                 <section class="span4">
+                                    
+                                </section>
+                               
+                            </section>
+
+                            <!-- Section privée -->
+                            <section class="row-fluid private">
+                                <section class="span4">
+                                   
+                                </section>
+                                <section class="span4">
+                                   
+                                </section>
+                                <section class="span4">
+                                   
+                                </section>
+                            </section>
+                        </section>
+                    </div>
+                    <aside class="span4 detailsbar">
+
+
+                        <dl>
+                            <dt>Fichier</dt>
+                            <dd><a href="../../graphs/diagGen.html"><div class="path-wrapper">EditeurTxt.java</div></a></dd>
+                            <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">client</div></dd>
+                            <dt>hierarchie classe</dt>
+                            <dd class="hierarchy">
+                                <div class="namespace-wrapper">\EditeurTxt</div>
+                            </dd>
+
+                            <dt>Voir aussi</dt>
+                            <dd><a href="http://www.dbs.bzh/portfolio"><div class="namespace-wrapper">http://www.dbs.bzh/portfolio</div></a></dd>
+
+                        </dl>
+                        <h2>Tags</h2>
+                        <table class="table table-condensed">
+
+                            <tr>
+                                <th>
+                                    author
+                                </th>
+                                <td>
+                                    <p>Cavron Jérémy &amp; Ez Ziraiy Nada</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    version
+                                </th>
+                                <td>
+                                    <p>v 1.0</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </aside>
+                </div>
+
+
+                <a id="properties" name="properties"></a>
+                <div class="row-fluid">
+                    <div class="span8 content class">
+                        <h2>Propriétés</h2>
+                    </div>
+                    <aside class="span4 detailsbar"></aside>
+                </div>
+
+
+                <!-- Procédures -->
+                <a id="procedures" name="procedures"></a>
+                <div class="row-fluid">
+                    <div class="span8 content class"><h2>Procédures</h2></div>
+                    <aside class="span4 detailsbar"></aside>
+                </div>
+
+
+
+                <!-- main -->
+                <div class="row-fluid">
+                    <div class="span8 content class">
+                        <a id="method_main" name="method_main" class="anchor"></a>
+                        <article class="method">
+                            <h3 class="private">main()</h3>
+                            <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                            <pre class="signature" style="margin-right: 54px;">main(String[]  <span class="argument">args</span>) </pre>
+                            <p><em>Procédure principale.</em></p>
+
+                            <h4>Paramètres</h4>
+                            <table class="table table-condensed table-hover">
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Nom</th>
+                                    <th>Commentaire</th>
+                                </tr>
+                                <tr>
+                                    <td>String[]</td>
+                                    <td>args</td>
+                                    <td><p>: est une liste d'arguments.</p></td>
+                                </tr>
+                            </table>
+                           
+
+                        </article>
+                    </div>
+                    <aside class="span4 detailsbar">
+                        <h1><i class="icon-arrow-down"></i></h1>
+                        <span class="label label-info">static</span>
+                        <dl>
+                        </dl>
+                        <h2></h2>
+                        <table class="table table-condensed">
+                            <tr><td colspan="2"><em></em></td></tr>
+                        </table>
+                    </aside>
+                </div>
+
+
+                <!-- Fonctions -->
+                <a id="fonctions" name="fonctions"></a>
+                <div class="row-fluid">
+                    <section class="span8 content file">
+                        <h2>Fonctions</h2>
+                    </section>
+                    <aside class="span4 detailsbar"></aside>
+                </div>
+
+
+               
+
+
+            </div>
+        </section>
+
+
+        <!-- Lien fichiers -->
+
+        <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="source-view-label">EditeurTxt.java</h3>
+            </div>
+            <div class="modal-body">
+                <pre data-src="../files/editeurTxt.txt" class="language-java line-numbers"></pre>
+            </div>
+        </div>
+
+        <!-- Footer -->
+
+        <footer class="row-fluid">
+            <section class="span10 offset2">
+                <section class="row-fluid">
+                    <section class="span10 offset1">
+                        <section class="row-fluid footer-sections">
+                            <section class="span4">
+                                <h1><i class="icon-code"></i></h1>
+                                <div>
+                                    <ul>
+                                        <li><a href="../../index.html">Documentation technique du Mini Editeur de texte V1</a></li>
+                                        <li><a href="../client.editeurTxt.html">Client.EditeurTxt</a></li>
+                                    </ul>
+                                </div>
+                            </section>
+                            <section class="span4">
+                                <h1><i class="icon-bar-chart"></i></h1>
+                                <div>
+                                    <ul>
+                                        <li><a href="../../../graphs/class.html">Diagramme Hierarchique de classes</a></li>
+                                    </ul>
+                            
+                                </div>
+                            </section>
+                            <section class="span4">
+                                <h1><i class="icon-pushpin"></i></h1>
+                                <div>
+                                    <ul>
+                                        <li><a href="../reports/errors.html">Erreurs</a></li>
+                                        <li><a href="../reports/markers.html">Marqueurs</a></li>
+                                    </ul>
+                                </div>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+                <section class="row-fluid">
+                    <section class="span10 offset1">
+                        <hr />
+                        Documentation writting by <a href="http://www.dbs.bzh/portfolio">Jérémy Cavron</a>
+                           &amp; Ez Ziraiy Nada on November 2017.
+                    </section>
+                </section>
+            </section>
+        </footer>
+    </div>
+
+</body>
+</html>
